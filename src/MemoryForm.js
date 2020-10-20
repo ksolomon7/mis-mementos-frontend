@@ -14,13 +14,23 @@ class MemoryForm extends React.Component{
     }
 
     handleChange=(evt)=>{
-      
-        console.log("Handle Change",evt.target.value)
+      this.setState({
+          [evt.target.name]: evt.target.value
+      })
     }
 
-    handleSubmit=(evt)=>{
-        console.log('Handle submit')
-    }
+    // handleSubmit=(evt)=>{
+    //     fetch("http://localhost:3000/memory",{
+    //         method:"POST",
+    //         headers:{
+    //             "Content-Type":"Application/json"
+    //         },
+    //         body:JSON.stringify{
+                
+    //         }
+    //     })
+    //     console.log('Handle submit')
+    // }
 
     render(){
     
@@ -28,16 +38,16 @@ class MemoryForm extends React.Component{
         return(
             <Form>
              <Form.Group unstackable widths={2}>
-                 <Form.Input label='Title' placeholder='Title' value={title} onChange={this.handleChange}/>
-                 <Form.Input label='about' placeholder='About' value={about} onChange={this.handleChange}/>
+                 <Form.Input label='Title' placeholder='Title' name="title" value={title} onChange={this.handleChange}/>
+                 <Form.Input label='About' placeholder='About' name="about"value={about} onChange={this.handleChange}/>
              </Form.Group>
              <Form.Group widths={2}>
-                 <Form.Input label='Address' placeholder='Address' value={address} onChange={this.handleChange}/>
-                 <Form.Input label='city' placeholder='City' value={city} onChange={this.handleChange}/>
-                 <Form.Input label='state' placeholder='State' value={state} onChange={this.handleChange}/>
-                 <Form.Input label='zipcode' placeholder='Zipcode' value={zipcode} onChange={this.handleChange}/>
+                 <Form.Input label='Address' placeholder='Address' name="address" value={address} onChange={this.handleChange}/>
+                 <Form.Input label='City' placeholder='City' name="city" value={city} onChange={this.handleChange}/>
+                 <Form.Input label='State' placeholder='State' name="state" value={state} onChange={this.handleChange}/>
+                 <Form.Input label='Zipcode' placeholder='Zipcode' name="zipcode" value={zipcode} onChange={this.handleChange}/>
              </Form.Group>
-             <Button type='submit'>Submit</Button>
+             <Button type='submit' onSubmit={this.handleSubmit}>Submit</Button>
             </Form>
 
         )
